@@ -106,9 +106,10 @@ export async function updateProduct(req,res) {
         
         const productId = req.params.productId; 
         const updateData = req.body;
-        await Product.updateOne(
+        await Product.findOneAndUpdate(
             {productId : productId},
-            updateData
+            updateData,
+            { new: true, runValidators: true }
         );
         res.json({
             message : "update succesfully product"
