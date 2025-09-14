@@ -64,11 +64,12 @@ export async function deleteProduct(req, res) {
 
     try {
         const productId = req.params.productId; 
-
+        
 
 
         // Find the product first
         const product = await Product.findOne({ productId });
+        
 
         if (!product) {
             res.status(404).json({
