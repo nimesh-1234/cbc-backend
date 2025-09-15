@@ -126,28 +126,23 @@ export async function updateProduct(req,res) {
 
 }
 
-export async function getProductId(req,res) {
-    
-    try {
-        
-        const productid = req.params.productId;
-        const product =  await Product.findOne(
-            {
-                productId : productid
-            }  
-        )
+export async function getProductId(req, res) {
+  try {
+    const productId = req.params.productId;
+    const product = await Product.findOne({
+      productId: productId,
+    });
 
-        if(product == null){
-            res.status(404).json({
-                message :"product not found"
-            })
-        }
-
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-
-            message : "Faild  to retrieve products",
-        });
+    if (product == null) {
+      res.status(404).json({
+        message: "product not found",
+      });
     }
+    return res.status(200).json(product);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      message: "Faild  to retrieve products",
+    });
+  }
 }
