@@ -102,11 +102,11 @@ export async function updateProduct(req,res){
 
 export async function getProductId(req,res){
     try{
-        const productID = req.params.productID;
+        const productId = req.params.productId;
 
         const product = await Product.findOne(
             {
-                productID : productID
+                productId : productId
             }
         )
         if(product == null){

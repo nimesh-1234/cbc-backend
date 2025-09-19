@@ -47,7 +47,8 @@ mongoose.connect(connectionString).then(
         console.log("Database connected Successfully")
     }
 ).catch(
-    ()=>{
+    (e)=>{
+        console.log(e);
         console.log("Database connection failed")
     }
 )
